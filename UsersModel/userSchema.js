@@ -1,0 +1,39 @@
+const mongoose = require("mongoose");
+
+const UserSchema = new mongoose.Schema({
+  username: {
+    type: String,
+    required: true,
+  },
+  email: {
+    type: String,
+    required: true,
+  },
+  password: {
+    type: String,
+    required: true,
+    unique: true,
+  },
+  phone: {
+    type: String,
+  },
+  avatar: {
+    type: String,
+  },
+  role: {
+    type: String,
+    enum: ["SUPERADMIN", "ADMIN", "USER"],
+    default: "USER",
+  },
+});
+UserSchema.set("toJSON", {
+  virtuals: true,
+  versionKey: false,
+  transform: (doc, ret) => {
+    delete ret._id;
+  },
+});
+
+const User = mongoose.model("User", UserSchema);
+
+module.exports = User;
