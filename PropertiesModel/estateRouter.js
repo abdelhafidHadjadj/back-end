@@ -3,8 +3,10 @@ const router = express.Router();
 const {
   AddPropertyHandler,
   GetAllPropertiesHandler,
+  GetPropertyHandler,
   DeletePropertyHandler,
   UpdatePropertyHandler,
+  UpdatePropertyAvailable,
 } = require("./estateServices");
 const { requireAuth } = require("../authentification/auth");
 const { requireAuthAdmin } = require("../authentification/authAdmin");
@@ -17,11 +19,17 @@ router.post(
   requireAuthAdmin
 );
 router.get("/allProperties", GetAllPropertiesHandler);
-router.delete(
-  "/delete-Property/:propertyId",
-  requireAuthAdmin,
-  DeletePropertyHandler
-);
-router.put("/update/:propertyId", requireAuthAdmin, UpdatePropertyHandler);
+router.get("/allProperties/:propertyId", GetPropertyHandler);
+router.delete("/delete-Property/:propertyId", DeletePropertyHandler);
+router.put(
+  "/update/:propertyId",
 
+  parser.array("image"),
+  UpdatePropertyHandler
+);
+router.put(
+  "/updateAvailable/:propertyId",
+  requireAuthAdmin,
+  UpdatePropertyAvailable
+);
 module.exports = router;

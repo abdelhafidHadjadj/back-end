@@ -1,19 +1,27 @@
 const mongoose = require("mongoose");
+const { Schema } = mongoose;
 const ContractSchema = new mongoose.Schema({
-  estateId: {
-    type: mongoose.Types.ObjectId,
+  employeeId: {
+    type: Schema.Types.ObjectId,
+    ref: "User",
   },
 
-  employeeId: mongoose.Types.ObjectId,
+  propertyId: String,
   client: String,
   contractType: String,
   contractDetails: String,
   price: Number,
+  totalAmount: Number,
+  period: Number,
   dateSigned: String,
   endDate: String,
   addedDateContract: {
     type: Date,
     default: Date.now,
+  },
+  status: {
+    type: String,
+    default: "Pending",
   },
 });
 ContractSchema.set("toJSON", {

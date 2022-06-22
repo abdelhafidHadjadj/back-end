@@ -15,6 +15,7 @@ function requireAuth(req, res, next) {
     console.log(userInfo);
 
     req.body.userId = userInfo.id;
+    res.send(userInfo);
     next();
   } catch (error) {
     res.status(403);

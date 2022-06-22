@@ -31,5 +31,18 @@ function loginWithEmail({ email, password }) {
 function getAllUsers() {
   return User.find({ role: "USER" });
 }
+function getAllAdmin() {
+  return User.find({ role: "ADMIN" });
+}
 
-module.exports = { register, loginWithEmail, getAllUsers };
+function updateUser(userId, input) {
+  return User.findByIdAndUpdate({ _id: userId }, input);
+}
+
+module.exports = {
+  register,
+  loginWithEmail,
+  getAllUsers,
+  getAllAdmin,
+  updateUser,
+};

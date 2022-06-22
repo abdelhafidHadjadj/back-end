@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 const PropertySchema = new mongoose.Schema({
-  userId: {
+  agentId: {
     type: mongoose.Types.ObjectId,
   },
 
@@ -10,7 +10,7 @@ const PropertySchema = new mongoose.Schema({
   },
   estateType: {
     type: String,
-    enum: ["Villa", "Apartment", "Office Space", "Commercials", "Residentails"],
+    enum: ["Villa", "Apartment", "Office Space", "Commercials", "Residentials"],
   },
   city: {
     type: String,
@@ -42,7 +42,7 @@ const PropertySchema = new mongoose.Schema({
   },
   dealType: {
     type: String,
-    enum: ["buy", "sell", "rent"],
+    enum: ["Buy", "Sell", "Rent"],
   },
   price: {
     type: Number,
@@ -55,9 +55,14 @@ const PropertySchema = new mongoose.Schema({
     type: Boolean,
     default: false,
   },
+  coordination: [],
   addedDate: {
     type: Date,
     default: Date.now,
+  },
+  available: {
+    type: Boolean,
+    default: true,
   },
 });
 PropertySchema.set("toJSON", {

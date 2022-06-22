@@ -23,6 +23,7 @@ function GetAllContractHandler(req, res) {
     .GetAllContract()
     .then((data) => {
       res.send(data);
+      console.log("Get all contracts");
     })
     .catch((err) => {
       console.log(err);
@@ -36,6 +37,7 @@ function GetOneContractHandler(req, res) {
     .GetOneContract(contractId)
     .then((data) => {
       res.send(data);
+      console.log(`Get ${contractId} Contract`);
       res.status(200);
     })
     .catch((err) => {
@@ -53,6 +55,7 @@ function UpdateContractHandler(req, res) {
     .then((data) => {
       res.send(data);
       res.status(201);
+      console.log("Contract Updated");
     })
     .catch((err) => {
       console.log(err);
