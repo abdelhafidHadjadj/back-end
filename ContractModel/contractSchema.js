@@ -6,7 +6,10 @@ const ContractSchema = new mongoose.Schema({
     ref: "User",
   },
 
-  propertyId: String,
+  propertyId: {
+    type: Schema.Types.ObjectId,
+    ref: "Property",
+  },
   client: String,
   contractType: String,
   contractDetails: String,

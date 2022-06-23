@@ -27,9 +27,5 @@ router.put(
   parser.array("image"),
   UpdatePropertyHandler
 );
-router.put(
-  "/updateAvailable/:propertyId",
-  requireAuthAdmin,
-  UpdatePropertyAvailable
-);
+router.put("/updateAvailable/:propertyId", UpdatePropertyAvailable);
 module.exports = router;

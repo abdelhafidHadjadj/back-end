@@ -5,7 +5,9 @@ function AddContract(contractDetaills) {
 }
 
 function GetAllContract() {
-  return Contract.find().populate("employeeId", "avatar username");
+  return Contract.find()
+    .populate("employeeId", "avatar username")
+    .populate("propertyId", "adresse city");
 }
 function GetOneContract(contractId) {
   return Contract.findOne({ _id: contractId });
