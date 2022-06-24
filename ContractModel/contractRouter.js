@@ -16,11 +16,11 @@ router.post(
   AddContractHandler
 );
 router.get("/getAllContract", GetAllContractHandler);
-router.get("/getContract/:contractId", requireAuth, GetOneContractHandler);
-router.put("/updateContract/:contractId", requireAuth, UpdateContractHandler);
+router.get("/getContract/:contractId", GetOneContractHandler);
+router.put("/updateContract/:contractId", UpdateContractHandler);
 router.delete(
   "/deleteContract/:contractId",
-  requireAuth,
+
   DeleteContractHandler
 );
 
