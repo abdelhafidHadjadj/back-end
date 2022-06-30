@@ -6,6 +6,7 @@ const {
   getAllAdminsHandler,
   loginHandler,
   UpdateUserHandler,
+  getAllUsersAdminsHandler,
 } = require("./userServices");
 const { requireAuth } = require("../authentification/auth");
 const { requireAuthAdmin } = require("../authentification/authAdmin");
@@ -16,6 +17,7 @@ router.post("/login", loginHandler);
 router.post("/Admin", loginHandler);
 router.get("/getUsers", getAllUsersHandler);
 router.get("/getAllAdmins", getAllAdminsHandler);
+router.get("/getAllAdminsUsers", getAllUsersAdminsHandler);
 router.put(
   "/updateAdminInfo/:userId",
   parser.array("avatar"),

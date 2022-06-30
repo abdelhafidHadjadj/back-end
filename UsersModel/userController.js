@@ -21,6 +21,9 @@ function register(userDetaills) {
 
 function loginWithEmail({ email, password }) {
   return User.findOne({ email: email }).then((user) => {
+    console.log(user.password);
+    console.log(password);
+
     if (bcrypt.compareSync(password, user.password)) {
       const token = generateAccessToken(user);
       return { ...user.toJSON(), token };
@@ -34,6 +37,9 @@ function getAllUsers() {
 function getAllAdmin() {
   return User.find({ role: "ADMIN" });
 }
+function getAllUsersAdmins() {
+  return User.find();
+}
 
 function updateUser(userId, input) {
   return User.findByIdAndUpdate({ _id: userId }, input);
@@ -45,4 +51,5 @@ module.exports = {
   getAllUsers,
   getAllAdmin,
   updateUser,
+  getAllUsersAdmins,
 };

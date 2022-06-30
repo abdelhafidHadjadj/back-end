@@ -64,6 +64,20 @@ function getAllAdminsHandler(req, res) {
       res.status(404);
     });
 }
+function getAllUsersAdminsHandler(req, res) {
+  userController
+    .getAllUsersAdmins()
+    .then((data) => {
+      res.send(data);
+      console.log("get Admins and Users");
+      res.status(200);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.send({ message: "Not found" });
+      res.status(404);
+    });
+}
 
 async function UpdateUserHandler(req, res) {
   const { userId } = req.params;
@@ -114,4 +128,5 @@ module.exports = {
   loginHandler,
   getAllAdminsHandler,
   UpdateUserHandler,
+  getAllUsersAdminsHandler,
 };

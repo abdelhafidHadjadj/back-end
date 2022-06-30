@@ -123,7 +123,7 @@ function UpdatePropertyAvailable(req, res) {
     .then((data) => {
       res.send(data);
       console.log(data);
-      console.log("updating ");
+      console.log("updating");
       res.status(201);
     })
     .catch((err) => {
