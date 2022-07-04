@@ -6,9 +6,12 @@ const contractRouter = require("./ContractModel/contractRouter");
 const transactionRouter = require("./TransactionModel/transactionRouter");
 const cloudinaryRouter = require("./Utils/cloudinaryRouter");
 const appointmentRouter = require("./AppointmentModel/appointmentRouter");
+const app = express();
+app.use(
+  require("prerender-node").set("prerenderToken", "SASPMlz3zMQp2FDGowxw")
+);
 const cors = require("cors");
 
-const app = express();
 const port = process.env.PORT || 3000;
 require("./database");
 app.use(express.static("public"));
